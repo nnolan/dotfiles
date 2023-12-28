@@ -25,6 +25,9 @@ null_ls.setup({
         return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
       end,
     }),
+    null_ls.builtins.diagnostics.golangci_lint,
+    null_ls.builtins.formatting.goimports,
+    null_ls.builtins.code_actions.gomodifytags,
   },
   -- configure format on save
   on_attach = function(current_client, bufnr)
