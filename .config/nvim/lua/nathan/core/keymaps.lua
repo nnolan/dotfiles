@@ -13,6 +13,9 @@ keymap.set("i", "jk", "<ESC>")
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- write file
+keymap.set("n", "<leader>w", ":w<CR>")
+
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
 
