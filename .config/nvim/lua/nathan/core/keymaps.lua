@@ -15,6 +15,10 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- write file
 keymap.set("n", "<leader>w", ":w<CR>")
+keymap.set("n", "<leader>wq", ":wq!<CR>")
+
+-- quit file
+keymap.set("n", "<leader>qq", ":q<CR>")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
