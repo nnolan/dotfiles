@@ -1,7 +1,8 @@
--- set leader key to space
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
+local api = vim.api
+local opts = { noremap = true, silent = true }
 
 ---------------------
 -- General Keymaps
@@ -20,6 +21,25 @@ keymap.set("n", "<leader>wq", ":wq!<CR>")
 -- quit file
 keymap.set("n", "<leader>qq", ":q<CR>")
 
+-- nvim-tree create new file in current directory
+api.fs = {
+  create = function()
+    local input = vim.fn.input("New file name: ")
+    if input == "" then
+      print("File name cannot be empty")
+      return
+    end
+    local path = vim.fn.expand("%:p:h") .. "/" .. input
+    if vim.fn.filereadable(path) == 1 then
+      print("File already exists")
+      return
+    end
+    vim.cmd("edit " .. path)
+  end,
+}
+
+-- create new file in current directory
+keymap.set("n", "<leader>nn", api.fs.create)
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
 
