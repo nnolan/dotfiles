@@ -1,6 +1,6 @@
 # Mostly Nvim stuffs
 
-If you're on mac, like me, you can install iTerm2, Neovim, Ripgrep and Node with homebrew.
+Install iTerm2 if you don't have it, Neovim, Ripgrep and Node with homebrew.
 
 ```bash
 brew install --cask iterm2
@@ -18,32 +18,9 @@ brew install ripgrep
 brew install node
 ```
 
-For XCode Command Line Tools do:
-
-```bash
-xcode-select --install
-```
-
-### Nvim-Treesitter Updates
-
-When nvim-treesitter updates, there might be breaking changes to corresponding parsers being used. I made a change to make sure parsers are automatically updated whenever nvim-treesitter is installed/updated. The code is found in this file: [plugins-setup.lua](.config/nvim/lua/josean/plugins-setup.lua)
-
-The updated code is this:
-
-```lua
-use({
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-      ts_update()
-    end,
-  })
-
-```
-
 ## Plugins
 
-### #Copilot
+#### Copilot
 
 - [Copilot](https://github.com/zbirenbaum/copilot.lua)
 
