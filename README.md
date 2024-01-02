@@ -24,10 +24,6 @@ For XCode Command Line Tools do:
 xcode-select --install
 ```
 
-### Copilot
-
-- [Copilot repo with instructions on how to start it](https://github.com/zbirenbaum/copilot.lua)
-
 ### Nvim-Treesitter Updates
 
 When nvim-treesitter updates, there might be breaking changes to corresponding parsers being used. I made a change to make sure parsers are automatically updated whenever nvim-treesitter is installed/updated. The code is found in this file: [plugins-setup.lua](.config/nvim/lua/josean/plugins-setup.lua)
@@ -46,6 +42,10 @@ use({
 ```
 
 ## Plugins
+
+### #Copilot
+
+- [Copilot](https://github.com/zbirenbaum/copilot.lua)
 
 #### Plugin Manager
 
