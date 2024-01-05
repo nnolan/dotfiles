@@ -21,6 +21,9 @@ keymap.set("n", "<leader>wq", ":wq!<CR>")
 -- quit file
 keymap.set("n", "<leader>qq", ":q<CR>")
 
+-- replace work with last yanked item
+keymap.set("n", "<leader>wp", 'viwp:viw"0p')
+
 -- nvim-tree create new file in current directory
 api.fs = {
   create = function()

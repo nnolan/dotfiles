@@ -1,6 +1,6 @@
 # Mostly Nvim stuffs
 
-Install iTerm2 if you don't have it, Neovim, Ripgrep and Node with homebrew.
+Install iTerm2 if you don't have it, Neovim, Ripgrep, Golang and Node with homebrew.
 
 ```bash
 brew install --cask iterm2
@@ -15,8 +15,17 @@ brew install ripgrep
 ```
 
 ```bash
+brew install golang
+```
+
+```bash
 brew install node
 ```
+
+## Golang Path
+
+Add golang path to .zshrc
+`export GOPATH=$HOME/go`
 
 ## Plugins
 
