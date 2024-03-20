@@ -4,6 +4,61 @@ local keymap = vim.keymap -- for conciseness
 local api = vim.api
 local opts = { noremap = true, silent = true }
 
+---- Custom Functions Below ----
+--
+-- Define the comment function
+local function python_comment_lines()
+  local count = vim.fn.input("Number of lines: ")
+  local num_lines = tonumber(count)
+
+  if not num_lines or num_lines < 1 then
+    num_lines = 1
+  end
+
+  local line_num = vim.api.nvim_win_get_cursor(0)[1]
+
+  local end_line = line_num + num_lines - 1
+
+  -- Get the current buffer
+  local buf = vim.api.nvim_get_current_buf()
+
+  -- Retrieve the lines to be commented
+  local lines = vim.api.nvim_buf_get_lines(buf, line_num - 1, end_line, false)
+
+  for i, line in ipairs(lines) do
+    lines[i] = "# " .. line
+  end
+
+  -- Replace the lines in the buffer
+  vim.api.nvim_buf_set_lines(buf, line_num - 1, end_line, false, lines)
+end
+
+local function go_comment_lines()
+  local count = vim.fn.input("Number of lines: ")
+  local num_lines = tonumber(count)
+
+  if not num_lines or num_lines < 1 then
+    num_lines = 1
+  end
+
+  local line_num = vim.api.nvim_win_get_cursor(0)[1]
+
+  local end_line = line_num + num_lines - 1
+
+  -- Get the current buffer
+  local buf = vim.api.nvim_get_current_buf()
+
+  -- Retrieve the lines to be commented
+  local lines = vim.api.nvim_buf_get_lines(buf, line_num - 1, end_line, false)
+
+  for i, line in ipairs(lines) do
+    lines[i] = "// " .. line
+  end
+
+  -- Replace the lines in the buffer
+  vim.api.nvim_buf_set_lines(buf, line_num - 1, end_line, false, lines)
+end
+
 ---------------------
 -- General Keymaps
 ---------------------
@@ -25,13 +80,19 @@ keymap.set("n", "<leader>qq", ":q<CR>")
 keymap.set("n", "<leader>wp", 'viwp:viw"0p')
 
 -- yank line without leading whitespace
-keymap.set("n", "<leader>yl", "y$")
+keymap.set("n", "<leader>yl", "^y$")
 
 -- cut line without leading whitespace and delete the line
 keymap.set("n", "<leader>dl", "^y$dd")
 
 -- delete function, class or block
 keymap.set("n", "<leader>df", "d}")
+
+-- comment out a provided number of lines with #. take input for amount of lines to comment
+keymap.set("n", "<leader>pc", python_comment_lines, { silent = true, noremap = true })
+
+-- comment out a provided number of lines with //. take input for amount of lines to comment
+keymap.set("n", "<leader>gc", go_comment_lines, { silent = true, noremap = true })
 
 -- nvim-tree create new file in current directory
 api.fs = {
