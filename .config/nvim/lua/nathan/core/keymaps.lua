@@ -30,6 +30,9 @@ keymap.set("n", "<leader>yl", "y$")
 -- cut line without leading whitespace and delete the line
 keymap.set("n", "<leader>dl", "^y$dd")
 
+-- delete function, class or block
+keymap.set("n", "<leader>df", "d}")
+
 -- nvim-tree create new file in current directory
 api.fs = {
   create = function()
