@@ -27,6 +27,9 @@ keymap.set("n", "<leader>wp", 'viwp:viw"0p')
 -- yank line without leading whitespace
 keymap.set("n", "<leader>yl", "y$")
 
+-- cut line without leading whitespace and delete the line
+keymap.set("n", "<leader>dl", "^y$dd")
+
 -- nvim-tree create new file in current directory
 api.fs = {
   create = function()
